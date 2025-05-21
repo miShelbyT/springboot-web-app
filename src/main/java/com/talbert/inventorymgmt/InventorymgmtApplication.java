@@ -8,8 +8,13 @@ import jakarta.annotation.PreDestroy;
 public class InventorymgmtApplication {
 
 	public static void main(String[] args) { 
-		SpringApplication.run(InventorymgmtApplication.class, args); 
-		System.out.println("Application has started and SpringApplication.run completed.");
+		try {
+			SpringApplication.run(InventorymgmtApplication.class, args); 
+			System.out.println("Application has started and SpringApplication.run completed.");
+		} catch( Exception e) {
+			System.out.println("Exception caught. Application crashed:");
+			e.printStackTrace(System.out);
+		}
 	}
 
 	@PreDestroy
