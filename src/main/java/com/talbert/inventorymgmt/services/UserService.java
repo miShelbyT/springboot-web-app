@@ -2,7 +2,9 @@ package com.talbert.inventorymgmt.services;
 
 import com.talbert.inventorymgmt.entities.User;
 import com.talbert.inventorymgmt.repository.UserRepository;
+import com.talbert.inventorymgmt.security.UserPrincipal;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -33,17 +35,15 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public boolean authenticate(String email, String password) {
+    public UserDetails authenticate(String email, String password) {
         User user = userRepository.findFirstByEmail(email);
-
-        if(!user.getEmail().equals(email)){
+        if(user == null || !user.getEmail().equals(email)){
             throw new UsernameNotFoundException("User does not exist in the database");
         }
-
         if (!bCryptPasswordEncoder.matches(password, user.getPassword())) {
             throw new BadCredentialsException("The password is incorrect");
         }
-        return  true;
+        return  new UserPrincipal(user);
     }
 
 

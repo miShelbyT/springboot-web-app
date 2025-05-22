@@ -2,7 +2,9 @@ package com.talbert.inventorymgmt.services;
 
 import com.talbert.inventorymgmt.entities.Manager;
 import com.talbert.inventorymgmt.repository.ManagerRepository;
+import com.talbert.inventorymgmt.security.ManagerPrincipal;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -42,15 +44,15 @@ public class ManagerService {
         return manager.isAdmin();
     }
 
-    public boolean authenticate(String email, String password) {
+    public UserDetails authenticate(String email, String password) {
         Manager manager = managerRepository.findFirstByEmail(email);
-        if(manager == null) {
+        if(manager == null || !manager.getEmail().equals(email)) {
             throw new UsernameNotFoundException("User not found");
         }
 
         if (!bCryptPasswordEncoder.matches(password, manager.getPassword())) {
             throw  new BadCredentialsException("The password is incorrect");
         }
-        return  true;
+        return new ManagerPrincipal(manager);
     }
 }

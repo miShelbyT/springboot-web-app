@@ -15,6 +15,8 @@ public class LoginRequest {
     private String email;
     private String password;
     private boolean admin;
+    private String token;
+
 
 
     public LoginRequest(Integer id, String email, String password, boolean admin) {
@@ -58,6 +60,14 @@ public class LoginRequest {
 
     public boolean getIsAdmin() {
         return admin;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
 
