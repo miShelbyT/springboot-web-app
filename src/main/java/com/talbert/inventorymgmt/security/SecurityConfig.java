@@ -64,7 +64,7 @@ public class SecurityConfig {
         System.out.println("corsConfigurationSource");
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of("http://localhost:3000",
-                                                "https://web-app-frontend-production.up.railway.app/"));        
+                                                "https://inventorymgmtreact.netlify.app/"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
         configuration.setAllowCredentials(true);
         configuration.addAllowedHeader("*");
