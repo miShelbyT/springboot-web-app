@@ -3,7 +3,7 @@ Inventory Management App was created as my capstone project/culmination of my BS
 
 Upon login, the general user can view the current inventory of the store, and can filter, run and print reports. Upon login, the admin/manager user has full CRUD functionality for the inventory, including price and other status changes, as well as marking items as sold or purchasing additional items.
 
-The Spring Boot application uses several entity classes: mainly User, Manager (which is a subclass of User), InventoryItem, a DTO LoginRequest, and two other classes that handle JWT creation and management. 
+The Spring Boot application uses several entity classes: mainly User, Manager (a subclass of User), InventoryItem, a DTO LoginRequest, and two other classes that handle JWT creation and management. 
 
 <p style="text-align: center; width: 100%;">
     <img style="width: 65%;" src="resources/ERD_diagram.png" alt="screenshot of login page"> 
