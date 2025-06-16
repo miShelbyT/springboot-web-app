@@ -18,7 +18,7 @@ This application uses JUnit for unit and integration testing, and JPA and Hibern
 CORS configuration allows only the front-end url to make API requests - localhost is not allowed.
 
 
-The deployed application uses https protocol - with a Let's Encrypt certificate - to communicate with the Netlify front-end. More information about the React application can be found [here](https://github.com/miShelbyT/web-app-frontend).
+The AWS containerized/deployed application uses https protocol - with a Let's Encrypt certificate - to communicate with the Netlify front-end. More information about the React application can be found [here](https://github.com/miShelbyT/web-app-frontend).
 
 Deploy link available upon request - AWS invoices can add up!
 
